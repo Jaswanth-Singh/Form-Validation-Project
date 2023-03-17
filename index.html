@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body style="background-color: lightskyblue;">
+    <center>
+    <h1 style="font-style: italic; font-weight: 700;">Login Form</h1>
+</center>
+    <br><br>
+    <form name="login" action="" method="GET">
+        <div class="form-group" style="margin-left: 50px;">
+            <label for="name">Name</label>
+            <input type="text" style="width: 400px;" class="form-control" name="uname" id="name"/>
+        </div>
+        <br>
+        <div class="form-group" style="margin-left: 50px;">
+            <label for="useremail">Email</label>
+            <input type="email" style="width: 400px;" class="form-control" name="uemail" id="useremail" placeholder="user@mail.com"/>
+        </div>
+        <br>
+        <div class="form-group" style="margin-left: 50px;">
+            <label for="phno">Phone number</label>
+            <input type="number" name="phn" id="phno" style="width: 400px;" class="form-control"/>
+        </div>
+        <br>
+        <div class="form-group" style="margin-left: 50px;">
+            <label for="addr">Address</label>
+            <textarea name="uaddr" id="addr" style="width: 400px;" class="form-control"></textarea>
+        </div>
+        <br>
+        <div class="form-group" style="margin-left: 50px;">
+            <label for="pass">Password</label>
+            <input type="password" name="upass" id="pass" class="form-control" style="width: 400px;"/>
+        </div>
+        <br>
+        <div class="form-group" style="margin-left: 50px;">
+            <label for="cnpass">Confirm Password</label>
+            <input type="password" name="ucnpass" id="cnpass" class="form-control" style="width: 400px;"/>
+        </div>
+        <br>
+        <button type="submit" style="margin-left: 100px;" class="btn btn-primary" onclick="validate()">Submit</button>
+        <button type="reset" class="btn" style="background-color: #cccccc;">Cancel</button>
+    </form>
+    <script>
+        function validate(){
+            const name = document.forms.login.uname.value;
+            const email = document.forms.login.uemail.value;
+            const phno = document.forms.login.phn.value;
+            const pass = document.forms.login.upass.value;
+            const cpass = document.forms.login.ucnpass.value;
+            const namePat = /[^A-Z a-z]/;
+            const emailPat = /[@]/;
+            if(name.length<5){
+                alert("Name too short!");
+            }
+            else if(namePat.test(name)){
+                alert("Invalid name!");
+            }
+            else if(!emailPat.test(email)){
+                alert("Incorrect email address!");
+            }
+            else if(phno.length!=10){
+                alert("Invalid phone number!");
+            }
+            else if(pass=='password' || pass==name || pass.length<8){
+                alert("Password is too weak!");
+            }
+            else if(pass!=cpass){
+                alert("Passwords don't match!");
+            }
+            else{
+                alert("Form accepted!");
+            }
+            return true;
+        }
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
